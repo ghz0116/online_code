@@ -1,0 +1,107 @@
+@startuml
+
+entity "course" {
+  + course_id (PK)
+  --
+  course_name
+  course_cover
+  start_date
+  end_date
+  description
+  teacher_id
+}
+
+entity "course_evaluate" {
+  + evaluate_id (PK)
+  --
+  parent_id
+  create_time
+  course_id
+  user_id
+  content
+}
+
+entity "course_user" {
+  + id (PK)
+  --
+  course_id
+  user_id
+}
+
+entity "question" {
+  + question_id (PK)
+  --
+  question_name
+  solution_num
+  pass_rate
+  degree
+  question_detail
+  course_id
+  parameter_str
+  tags
+}
+
+entity "question_answer" {
+  + answer_id (PK)
+  --
+  question_id
+  user_id
+  language
+  code_file
+  correct
+  cost_time
+  submit_time
+}
+
+entity "question_favorite" {
+  + id (PK)
+  --
+  user_id
+  question_id
+}
+
+entity "question_pre_code" {
+  + id (PK)
+  --
+  question_id
+  type
+  code
+}
+
+entity "question_test_case" {
+  + id (PK)
+  --
+  question_id
+  name
+  parameter_map
+  result
+}
+
+entity "user" {
+  + id (PK)
+  --
+  real_name
+  username
+  password
+  email
+  head_portrait
+  identity
+  telephone
+  gender
+  birthday
+}
+
+course ||--o{ course_evaluate
+course ||--o{ course_user
+course ||--o{ question
+question ||--o{ question_answer
+question ||--o{ question_favorite
+question ||--o{ question_pre_code
+question ||--o{ question_test_case
+user ||--o{ course_user
+user ||--o{ course_evaluate
+user ||--o{ question_answer
+user ||--o{ question_favorite
+
+@enduml
+

@@ -1,0 +1,99 @@
+@startuml
+!define Table(name, fields) class name { fields }
+!define PK(field) field <b>PK</b>
+!define FK(field, table) field <b>FK</b> table
+
+Table(course, "
+    PK(course_id)
+    course_name
+    course_cover
+    start_date
+    end_date
+    description
+    FK(teacher_id, user)
+")
+
+Table(course_evaluate, "
+    PK(evaluate_id)
+    parent_id
+    create_time
+    FK(course_id, course)
+    FK(user_id, user)
+    content
+")
+
+Table(course_user, "
+    PK(id)
+    FK(course_id, course)
+    FK(user_id, user)
+")
+
+Table(question, "
+    PK(question_id)
+    question_name
+    solution_num
+    pass_rate
+    degree
+    question_detail
+    FK(course_id, course)
+    parameter_str
+    tags
+")
+
+Table(question_answer, "
+    PK(answer_id)
+    FK(question_id, question)
+    FK(user_id, user)
+    language
+    code_file
+    correct
+    cost_time
+    submit_time
+")
+
+Table(question_favorite, "
+    PK(id)
+    FK(user_id, user)
+    FK(question_id, question)
+")
+
+Table(question_pre_code, "
+    PK(id)
+    FK(question_id, question)
+    type
+    code
+")
+
+Table(question_test_case, "
+    PK(id)
+    FK(question_id, question)
+    name
+    parameter_map
+    result
+")
+
+Table(user, "
+    PK(id)
+    real_name
+    username
+    password
+    email
+    head_portrait
+    identity
+    telephone
+    gender
+    birthday
+")
+
+course "1" -- "N" course_evaluate : Contains
+course "1" -- "N" course_user : Enrolls
+course "1" -- "N" question : Has
+question "1" -- "N" question_answer : Has
+question "1" -- "N" question_favorite : Favorited
+question "1" -- "N" question_pre_code : Has
+question "1" -- "N" question_test_case : Has
+user "1" -- "N" course_user : Enrolled
+user "1" -- "N" course_evaluate : Evaluated
+user "1" -- "N" question_answer : Answered
+user "1" -- "N" question_favorite : Favorited
+@enduml

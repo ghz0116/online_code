@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/online_code?serverTimezone=GMT%2B8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 20
+      max-active: 50
+      initial-size: 2
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  security:
+    user:
+      name: user
+      password: 123456
+  jpa:
+    open-in-view: false
+
+
+server:
+  port: 7999
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+courseCoverDir: F:/计科（二）/毕业设计/resource/courseCover/
+questionImageDir: F:/计科（二）/毕业设计/resource/questionImage/
+temporaryCodeDir: F:/计科（二）/毕业设计/resource/temporaryCode/
+userSubmitCodeDir: F:/计科（二）/毕业设计/resource/userSubmitCode/
+headPortraitDir: F:/计科（二）/毕业设计/resource/headPortrait/
+pyScriptDir: F:/计科（二）/毕业设计/online_code_pyScript/
+
+

@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor 学生 as S
+rectangle "在线编程学习环境" {
+    usecase "选择编程语言" as SL
+    usecase "实时编写代码" as RTC
+    usecase "调试代码" as DC
+    usecase "提交作业" as SA
+    usecase "接收评价和反馈" as RF
+
+    S --> SL
+    S --> RTC
+    S --> DC
+    S --> SA
+    S --> RF
+}
+@enduml

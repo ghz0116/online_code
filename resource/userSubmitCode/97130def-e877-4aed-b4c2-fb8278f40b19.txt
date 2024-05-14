@@ -1,0 +1,20 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        // 创建一个哈希表用于存储数组元素及其下标
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        // 遍历数组，查找与当前元素匹配的另一个元素
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            // 如果在哈希表中找到了匹配的元素，则返回它们的下标
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            // 否则将当前元素及其下标存入哈希表中
+            map.put(nums[i], i);
+        }
+        
+        // 如果没有找到符合条件的两个数，返回一个空数组
+        return new int[0];
+    }
+}

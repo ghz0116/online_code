@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor 学生 as S
+actor 教师 as T
+rectangle "在线编程学习系统" {
+    usecase "访问学习资源" as ULR
+    usecase "实时编码" as RTC
+    usecase "提交作业" as SA
+    usecase "接收反馈" as RF
+    usecase "调整学习策略" as ALS
+    usecase "管理课程" as MC
+    usecase "创建课程大纲" as CCO
+    usecase "设定学习目标" as SLO
+    usecase "安排课程内容" as ACC
+    usecase "发布作业" as PA
+    usecase "评价作业" as EA
+    usecase "提供反馈" as PF
+    usecase "查看学生进度" as VSP
+    usecase "分析数据" as AD
+
+    S --> ULR
+    S --> RTC
+    S --> SA
+    S --> RF
+    S --> ALS
+
+    T --> MC
+    T --> PA
+    T --> EA
+    T --> PF
+    T --> VSP
+    T --> AD
+
+    MC --> CCO
+    MC --> SLO
+    MC --> ACC
+}
+@enduml

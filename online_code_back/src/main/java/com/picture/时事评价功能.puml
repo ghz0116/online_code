@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor 教师 as T
+rectangle "在线编程学习系统" {
+    usecase "创建课程" as CC
+    usecase "编辑课程" as EC
+    usecase "删除课程" as DC
+    usecase "发布作业" as PA
+    usecase "修改作业" as MA
+    usecase "删除作业" as DA
+    usecase "设定截止日期" as SDD
+    usecase "查看学生作业" as VSA
+    usecase "评价作业" as EA
+
+    T --> CC
+    T --> EC
+    T --> DC
+    T --> PA
+    T --> MA
+    T --> DA
+    T --> SDD
+    T --> VSA
+    T --> EA
+}
+@enduml
+

@@ -1,0 +1,10 @@
+def addTwoNumbers(l1, l2):
+    result = []
+    carry = 0
+
+    while l1 or l2 or carry:
+        sum_val = (l1.pop(0) if l1 else 0) + (l2.pop(0) if l2 else 0) + carry
+        carry = sum_val // 10
+        result.append(sum_val % 10)
+
+    return result
